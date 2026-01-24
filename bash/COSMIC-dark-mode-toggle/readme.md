@@ -1,4 +1,4 @@
-THIS IS SCRIPT HAS ITS OWN REPOSITORY WITH A GUIDE:
+THIS SCRIPT HAS ITS OWN REPOSITORY WITH A GUIDE:
 https://github.com/joshua-hvmn/pop-cosmic-dark-light-shortcut
 
 It is a simple toggle script that flips the state of the dark mode file on Pop!_OS 24.04 LTS on COSMIC DE, and it posts a temporary notification to be pretty.
