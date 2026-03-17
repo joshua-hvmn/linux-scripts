@@ -17,7 +17,7 @@ fi
 # Variables
 
 menu_options=(
-    'sudo nala update && sudo nala upgrade'
+    'sudo apt update && sudo apt upgrade'
     'flatpak update'
     'Update all (above commands)'
     'Cancel'
@@ -25,16 +25,16 @@ menu_options=(
 
 # Functions
 
-## Nala semantics
-nala_upgrade() {
+## apt semantics
+apt_upgrade() {
     if [ "$use_yes" -eq 1 ]; then
-        sudo nala upgrade -y
+        sudo apt upgrade -y
     else
-        sudo nala upgrade
+        sudo apt upgrade
     fi
 }
-nala_failed() {
-    echo "Nala failed, continuing to next step."
+apt_failed() {
+    echo "apt failed, continuing to next step."
 }
 
 ## Flatpak semantics
@@ -54,10 +54,10 @@ yes_no () {
         read -r response
 
         case "$response" in
-            n|N|[nN]o|[nN]O|[nN][oO])
+            ''|n|N|[nN]o|[nN]O|[nN][oO])
                 return 1
                 ;;
-            ''|[yY]|[yY]es|[yY][eE][sS])
+            [yY]|[yY]es|[yY][eE][sS])
                 return 0
                 ;;
             *)
@@ -71,16 +71,16 @@ yes_no () {
 update_func () {
     local option="$1"
     case "$option" in
-        "sudo nala update && sudo nala upgrade")
-            sudo nala update || nala_failed
-            nala_upgrade || nala_failed
+        "sudo apt update && sudo apt upgrade")
+            sudo apt update || apt_failed
+            apt_upgrade || apt_failed
             ;;
         "flatpak update")
             flatpak_update
             ;;
         "Update all (above commands)")
-                sudo nala update || nala_failed
-                nala_upgrade || nala_failed
+                sudo apt update || apt_failed
+                apt_upgrade || apt_failed
                 flatpak_update
             ;;
         "Cancel")
