@@ -50,7 +50,7 @@ flatpak_update() {
 #  - Move the '' to the no section to change to default no.
 yes_no () {
     while true; do
-        echo "Would you like to pass -y to the commands? [Y/n]"
+        echo "Would you like to pass -y to the commands? [y/N]"
         read -r response
 
         case "$response" in
